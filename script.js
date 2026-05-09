@@ -152,20 +152,39 @@ faqItems.forEach(item => {
 const emailBtn = document.getElementById('email-btn');
 if (emailBtn) {
   emailBtn.addEventListener('click', function(e) {
-    const email = 'dulinethmira08@gmail.com';
+    e.preventDefault(); // Stop the default mailto link temporarily
     
-    // Copy to clipboard
-    navigator.clipboard.writeText(email).then(() => {
-      const originalText = this.innerHTML;
+    const email = 'dulinethmira08@gmail.com';
+    const originalText = this.innerHTML;
+    
+    // Function to show success state
+    const showSuccess = () => {
       this.innerHTML = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
         Email Copied!
       `;
       
+      // After copying, wait a tiny bit then open the mail app
+      setTimeout(() => {
+        window.location.href = `mailto:${email}`;
+      }, 500);
+
+      // Reset button text after 2 seconds
       setTimeout(() => {
         this.innerHTML = originalText;
-      }, 2000);
-    });
+      }, 2500);
+    };
+
+    // Use the clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(showSuccess).catch(err => {
+        console.error('Failed to copy:', err);
+        window.location.href = `mailto:${email}`; // Fallback: just open mail
+      });
+    } else {
+      // Very old browser fallback
+      window.location.href = `mailto:${email}`;
+    }
   });
 }
 

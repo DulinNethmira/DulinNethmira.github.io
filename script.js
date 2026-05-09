@@ -152,40 +152,55 @@ faqItems.forEach(item => {
 const emailBtn = document.getElementById('email-btn');
 if (emailBtn) {
   emailBtn.addEventListener('click', function(e) {
-    e.preventDefault(); // Stop the default mailto link temporarily
-    
+    e.preventDefault();
     const email = 'dulinethmira08@gmail.com';
     const originalText = this.innerHTML;
-    
-    // Function to show success state
+
     const showSuccess = () => {
       this.innerHTML = `
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
         Email Copied!
       `;
-      
-      // After copying, wait a tiny bit then open the mail app
+      this.style.backgroundColor = 'var(--accent)';
+      this.style.color = 'white';
+
       setTimeout(() => {
         window.location.href = `mailto:${email}`;
       }, 500);
 
-      // Reset button text after 2 seconds
       setTimeout(() => {
         this.innerHTML = originalText;
+        this.style.backgroundColor = '';
+        this.style.color = '';
       }, 2500);
     };
 
-    // Use the clipboard API
+    // Modern API
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(showSuccess).catch(err => {
-        console.error('Failed to copy:', err);
-        window.location.href = `mailto:${email}`; // Fallback: just open mail
+      navigator.clipboard.writeText(email).then(showSuccess).catch(() => {
+        // Fallback if modern API fails
+        copyFallback(email, showSuccess);
       });
     } else {
-      // Very old browser fallback
-      window.location.href = `mailto:${email}`;
+      // Direct fallback
+      copyFallback(email, showSuccess);
     }
   });
+}
+
+function copyFallback(text, callback) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    callback();
+  } catch (err) {
+    console.error('Fallback copy failed', err);
+    window.location.href = `mailto:dulinethmira08@gmail.com`;
+  }
+  document.body.removeChild(textArea);
 }
 
 // 4. Upgraded Scroll Animations

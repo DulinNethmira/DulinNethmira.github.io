@@ -148,7 +148,26 @@ faqItems.forEach(item => {
   });
 });
 
-
+// 5. Email Copy to Clipboard
+const emailBtn = document.getElementById('email-btn');
+if (emailBtn) {
+  emailBtn.addEventListener('click', function(e) {
+    const email = 'dulinethmira08@gmail.com';
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(email).then(() => {
+      const originalText = this.innerHTML;
+      this.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        Email Copied!
+      `;
+      
+      setTimeout(() => {
+        this.innerHTML = originalText;
+      }, 2000);
+    });
+  });
+}
 
 // 4. Upgraded Scroll Animations
 document.querySelectorAll('.animate-on-scroll').forEach(el => {

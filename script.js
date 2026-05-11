@@ -203,6 +203,35 @@ function copyFallback(text, callback) {
   document.body.removeChild(textArea);
 }
 
+// 6. Preloader
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  setTimeout(() => {
+    preloader.classList.add('fade-out');
+  }, 1500); // Give users time to see the animation
+});
+
+// 7. Scroll Progress Bar
+window.addEventListener('scroll', () => {
+  const scrollProgress = document.getElementById('scroll-progress');
+  const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollValue = (window.scrollY / scrollTotal) * 100;
+  scrollProgress.style.width = scrollValue + '%';
+});
+
+// 8. Interactive Services Reveal (Mouse Tracking)
+const serviceCards = document.querySelectorAll('.service-card');
+serviceCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+});
+
 // 4. Upgraded Scroll Animations
 document.querySelectorAll('.animate-on-scroll').forEach(el => {
   el.style.transition = 'opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';

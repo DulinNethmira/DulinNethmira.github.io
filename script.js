@@ -228,11 +228,11 @@ async function updateVisitorCount() {
   const hasVisited = localStorage.getItem(storageKey);
 
   try {
-    let url = 'https://api.counterapi.dev/v1/dulindesigns/visits/up';
+    let url = 'https://api.counterapi.dev/v1/dulindesigns/unique_visits/up';
     
     // If they already visited, just GET the count without increasing it
     if (hasVisited) {
-      url = 'https://api.counterapi.dev/v1/dulindesigns/visits';
+      url = 'https://api.counterapi.dev/v1/dulindesigns/unique_visits';
     }
 
     const response = await fetch(url);

@@ -1488,6 +1488,13 @@ ul {
   .footer-container {
     flex-direction: column;
     text-align: center;
+    gap: 32px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px 24px;
   }
 }
 
@@ -1520,5 +1527,9 @@ ul {
   .contact-actions .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .footer {
+    padding: 60px 0;
   }
 }

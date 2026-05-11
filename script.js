@@ -219,19 +219,33 @@ window.addEventListener('scroll', () => {
   if (scrollProgress) scrollProgress.style.width = scrollValue + '%';
 });
 
-// 9. Visitor Counter (Total Views)
+// 9. Visitor Counter (Total Views - Unique)
 async function updateVisitorCount() {
   const totalViewsEl = document.getElementById('total-views');
   if (!totalViewsEl) return;
 
+  const storageKey = 'dulin_visited_unique';
+  const hasVisited = localStorage.getItem(storageKey);
+
   try {
-    // Using CounterAPI.dev (More stable)
-    const response = await fetch('https://api.counterapi.dev/v1/dulindesigns/visits/up');
+    let url = 'https://api.counterapi.dev/v1/dulindesigns/visits/up';
+    
+    // If they already visited, just GET the count without increasing it
+    if (hasVisited) {
+      url = 'https://api.counterapi.dev/v1/dulindesigns/visits';
+    }
+
+    const response = await fetch(url);
     const data = await response.json();
     totalViewsEl.textContent = data.count.toLocaleString();
+
+    // Mark as visited so refresh doesn't increase it
+    if (!hasVisited) {
+      localStorage.setItem(storageKey, 'true');
+    }
   } catch (error) {
     console.error('CounterAPI Error:', error);
-    totalViewsEl.textContent = '12'; // Better fallback for a new site
+    totalViewsEl.textContent = '12';
   }
 }
 

@@ -238,7 +238,101 @@ async function updateVisitorCount() {
 // Initialize counters
 document.addEventListener('DOMContentLoaded', () => {
   updateVisitorCount();
+  initSkillsOrbit();
 });
+
+// 11. 3D Skills Orbit
+function initSkillsOrbit() {
+  const container = document.getElementById('skills-orbit');
+  if (!container) return;
+
+  const skills = [
+    'HTML5', 'CSS3', 'JavaScript', 'Premiere Pro', 'After Effects', 
+    'CapCut', 'Photoshop', 'Web Design', 'Video Editing', 'SEO', 
+    'UI/UX', 'Responsive', 'Modern Web', 'Animations'
+  ];
+
+  const tags = [];
+  const radius = container.offsetWidth / 2.5;
+
+  skills.forEach((skill, i) => {
+    const phi = Math.acos(-1 + (2 * i) / skills.length);
+    const theta = Math.sqrt(skills.length * Math.PI) * phi;
+
+    const x = radius * Math.cos(theta) * Math.sin(phi);
+    const y = radius * Math.sin(theta) * Math.sin(phi);
+    const z = radius * Math.cos(phi);
+
+    const el = document.createElement('div');
+    el.className = 'skill-tag';
+    el.textContent = skill;
+    container.appendChild(el);
+
+    tags.push({ el, x, y, z });
+  });
+
+  let angleX = 0.001;
+  let angleY = 0.001;
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    angleX = (e.clientY - rect.top - rect.height / 2) * 0.00005;
+    angleY = (e.clientX - rect.left - rect.width / 2) * 0.00005;
+  });
+
+  function rotate() {
+    tags.forEach(tag => {
+      const cosX = Math.cos(angleX);
+      const sinX = Math.sin(angleX);
+      const cosY = Math.cos(angleY);
+      const sinY = Math.sin(angleY);
+
+      // Rotate around X axis
+      const y1 = tag.y * cosX - tag.z * sinX;
+      const z1 = tag.z * cosX + tag.y * sinX;
+      tag.y = y1;
+      tag.z = z1;
+
+      // Rotate around Y axis
+      const x2 = tag.x * cosY + tag.z * sinY;
+      const z2 = tag.z * cosY - tag.x * sinY;
+      tag.x = x2;
+      tag.z = z2;
+
+      // Perspective
+      const scale = 1000 / (1000 + tag.z);
+      const alpha = (tag.z + radius) / (2 * radius);
+
+      tag.el.style.transform = `translate3d(${tag.x * scale}px, ${tag.y * scale}px, 0) scale(${scale})`;
+      tag.el.style.opacity = alpha + 0.2;
+      tag.el.style.zIndex = Math.floor(scale * 100);
+    });
+    requestAnimationFrame(rotate);
+  }
+  rotate();
+}
+
+// 12. Luxury Smooth Scroll
+let currentScroll = 0;
+let targetScroll = 0;
+const ease = 0.075;
+
+window.addEventListener('scroll', () => {
+  targetScroll = window.scrollY;
+});
+
+// We only use this for a subtle "heavy" feel if not on mobile
+if (window.matchMedia("(pointer: fine)").matches) {
+  function smoothScroll() {
+    currentScroll += (targetScroll - currentScroll) * ease;
+    // Note: We don't want to actually move the scroll here as it conflicts with native scroll
+    // but we can use this value for parallax effects later if needed.
+    // For a true "Lenis" effect, we would need to hijack the wheel event, 
+    // but for now, the native scroll behavior is safe and reliable.
+    requestAnimationFrame(smoothScroll);
+  }
+  smoothScroll();
+}
 
 // 8. Interactive Services Reveal (Mouse Tracking)
 const serviceCards = document.querySelectorAll('.service-card');

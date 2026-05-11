@@ -235,24 +235,9 @@ async function updateVisitorCount() {
   }
 }
 
-// 10. Live Visitor Simulation (Social Proof)
-function updateLiveVisitors() {
-  const liveVisitorsEl = document.getElementById('live-visitors');
-  if (!liveVisitorsEl) return;
-
-  // Simulate small fluctuations
-  const baseVisitors = 1;
-  const randomExtra = Math.floor(Math.random() * 3); // 0 to 2
-  liveVisitorsEl.textContent = baseVisitors + randomExtra;
-
-  // Change every 10-20 seconds
-  setTimeout(updateLiveVisitors, Math.random() * 10000 + 10000);
-}
-
 // Initialize counters
 document.addEventListener('DOMContentLoaded', () => {
   updateVisitorCount();
-  updateLiveVisitors();
 });
 
 // 8. Interactive Services Reveal (Mouse Tracking)

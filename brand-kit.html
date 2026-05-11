@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dulin Designs | Brand Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --accent-1: #818cf8; /* Indigo */
+      --accent-2: #c084fc; /* Purple */
+      --text: #f3f4f6;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 100px;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 1000px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 40px;
+      color: var(--accent-1);
+    }
+
+    /* ===== LOGO SECTION ===== */
+    .logo-container {
+      background: #000;
+      width: 500px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      box-shadow: 0 0 50px rgba(129, 140, 248, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-bg-glow {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(129, 140, 248, 0.15) 0%, transparent 70%);
+      top: -25%;
+      left: -25%;
+    }
+
+    .logo-main {
+      font-size: 280px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      filter: drop-shadow(0 0 30px rgba(192, 132, 252, 0.3));
+    }
+
+    /* ===== BANNER SECTION ===== */
+    .banner-container {
+      width: 1000px;
+      height: 400px;
+      background: #000;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+      box-sizing: border-box;
+      box-shadow: 0 0 50px rgba(129, 140, 248, 0.1);
+    }
+
+    .banner-bg-orbs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.4;
+    }
+
+    .orb-1 {
+      top: -20%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: var(--accent-1);
+    }
+
+    .orb-2 {
+      bottom: -20%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: var(--accent-2);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      text-align: left;
+    }
+
+    .banner-title {
+      font-size: 72px;
+      font-weight: 900;
+      margin: 0;
+      background: linear-gradient(to right, #fff, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .banner-subtitle {
+      font-size: 24px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--accent-1);
+      margin-top: 10px;
+      font-weight: 700;
+    }
+
+    .banner-line {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-1), var(--accent-2));
+      margin-top: 20px;
+      border-radius: 2px;
+    }
+
+    .instructions {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 50px;
+      line-height: 1.6;
+      color: #9ca3af;
+    }
+
+    .instructions code {
+      color: var(--accent-1);
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>1. Your Business Logo</h1>
+    <div class="logo-container" id="logo">
+      <div class="logo-bg-glow"></div>
+      <div class="logo-main">D</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>2. Your Business Banner</h1>
+    <div class="banner-container" id="banner">
+      <div class="banner-bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+      <div class="banner-content">
+        <div class="banner-title">Dulin Designs</div>
+        <div class="banner-subtitle">Web Design & Video Editing</div>
+        <div class="banner-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="instructions">
+      <h3>How to save these:</h3>
+      <p>1. Open this file in your browser.</p>
+      <p>2. Zoom in/out until the logo or banner fits your screen perfectly.</p>
+      <p>3. Use <code>Windows + Shift + S</code> to take a clean screenshot of just the black square (for the logo) or the black rectangle (for the banner).</p>
+      <p>4. Upload them to your WhatsApp Business profile!</p>
+    </div>
+  </div>
+
+</body>
+</html>

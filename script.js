@@ -216,7 +216,43 @@ window.addEventListener('scroll', () => {
   const scrollProgress = document.getElementById('scroll-progress');
   const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
   const scrollValue = (window.scrollY / scrollTotal) * 100;
-  scrollProgress.style.width = scrollValue + '%';
+  if (scrollProgress) scrollProgress.style.width = scrollValue + '%';
+});
+
+// 9. Visitor Counter (Total Views)
+async function updateVisitorCount() {
+  const totalViewsEl = document.getElementById('total-views');
+  if (!totalViewsEl) return;
+
+  try {
+    // Using CountAPI (Free key-value storage)
+    const response = await fetch('https://api.countapi.xyz/hit/dulinnethmira.github.io/visits');
+    const data = await response.json();
+    totalViewsEl.textContent = data.value.toLocaleString();
+  } catch (error) {
+    console.error('CountAPI Error:', error);
+    totalViewsEl.textContent = '1,240+'; // Fallback
+  }
+}
+
+// 10. Live Visitor Simulation (Social Proof)
+function updateLiveVisitors() {
+  const liveVisitorsEl = document.getElementById('live-visitors');
+  if (!liveVisitorsEl) return;
+
+  // Simulate small fluctuations
+  const baseVisitors = 1;
+  const randomExtra = Math.floor(Math.random() * 3); // 0 to 2
+  liveVisitorsEl.textContent = baseVisitors + randomExtra;
+
+  // Change every 10-20 seconds
+  setTimeout(updateLiveVisitors, Math.random() * 10000 + 10000);
+}
+
+// Initialize counters
+document.addEventListener('DOMContentLoaded', () => {
+  updateVisitorCount();
+  updateLiveVisitors();
 });
 
 // 8. Interactive Services Reveal (Mouse Tracking)

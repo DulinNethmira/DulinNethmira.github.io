@@ -225,13 +225,13 @@ async function updateVisitorCount() {
   if (!totalViewsEl) return;
 
   try {
-    // Using CountAPI (Free key-value storage)
-    const response = await fetch('https://api.countapi.xyz/hit/dulinnethmira.github.io/visits');
+    // Using CounterAPI.dev (More stable)
+    const response = await fetch('https://api.counterapi.dev/v1/dulindesigns/visits/up');
     const data = await response.json();
-    totalViewsEl.textContent = data.value.toLocaleString();
+    totalViewsEl.textContent = data.count.toLocaleString();
   } catch (error) {
-    console.error('CountAPI Error:', error);
-    totalViewsEl.textContent = '1,240+'; // Fallback
+    console.error('CounterAPI Error:', error);
+    totalViewsEl.textContent = '12'; // Better fallback for a new site
   }
 }
 

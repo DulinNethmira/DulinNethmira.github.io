@@ -253,7 +253,7 @@ function initSkillsOrbit() {
   ];
 
   const tags = [];
-  const radius = container.offsetWidth / 2.5;
+  const radius = container.offsetWidth / 3; // Smaller radius to fit within container
 
   skills.forEach((skill, i) => {
     const phi = Math.acos(-1 + (2 * i) / skills.length);

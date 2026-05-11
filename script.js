@@ -235,10 +235,59 @@ async function updateVisitorCount() {
   }
 }
 
-// Initialize counters
+// ===== ADVANCED NAVBAR ANIMATIONS =====
+function initAdvancedNav() {
+  const navMenu = document.querySelector('.nav-menu');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const indicator = document.querySelector('.nav-indicator');
+
+  if (!navMenu || !indicator) return;
+
+  // 1. Sliding Indicator Logic
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', (e) => {
+      const rect = link.getBoundingClientRect();
+      const parentRect = navMenu.getBoundingClientRect();
+      
+      indicator.style.width = `${rect.width}px`;
+      indicator.style.left = `${rect.left - parentRect.left}px`;
+      indicator.style.opacity = '1';
+    });
+
+    // 2. Magnetic Pull Effect
+    link.addEventListener('mousemove', (e) => {
+      const rect = link.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) * 0.3;
+      const y = (e.clientY - rect.top - rect.height / 2) * 0.3;
+      link.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    link.addEventListener('mouseleave', () => {
+      link.style.transform = `translate(0, 0)`;
+    });
+  });
+
+  navMenu.addEventListener('mouseleave', () => {
+    indicator.style.opacity = '0';
+  });
+
+  // 3. Staggered Entrance
+  navLinks.forEach((link, index) => {
+    link.style.opacity = '0';
+    link.style.transform = 'translateY(-20px)';
+    setTimeout(() => {
+      link.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      link.style.opacity = '1';
+      link.style.transform = 'translateY(0)';
+    }, 100 + (index * 100));
+  });
+}
+
+// Call inside DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   updateVisitorCount();
   initSkillsOrbit();
+  initAdvancedNav();
 });
 
 // 11. 3D Skills Orbit

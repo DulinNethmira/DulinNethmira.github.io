@@ -842,6 +842,10 @@ ul {
   aspect-ratio: 3 / 2;
 }
 
+.project-image.portrait {
+  aspect-ratio: 9 / 16;
+}
+
 .project-image img {
   width: 100%;
   height: 100%;

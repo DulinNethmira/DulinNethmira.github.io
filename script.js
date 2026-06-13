@@ -33,6 +33,7 @@ function typeEffect() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(typeEffect, 600);
+  initPortfolioTabs();
 });
 
 
@@ -247,6 +248,28 @@ async function updateVisitorCount() {
     console.error('CounterAPI Error:', error);
     totalViewsEl.textContent = '12';
   }
+}
+
+// ===== PORTFOLIO TABS =====
+function initPortfolioTabs() {
+  const tabs = document.querySelectorAll('.portfolio-tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active from all
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Add active to clicked tab
+      tab.classList.add('active');
+      const targetId = `tab-${tab.dataset.tab}`;
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+    });
+  });
 }
 
 // ===== ADVANCED NAVBAR ANIMATIONS =====

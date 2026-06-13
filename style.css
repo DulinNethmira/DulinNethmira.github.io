@@ -771,9 +771,53 @@ ul {
 }
 
 
-/* ===== PORTFOLIO ===== */
-.projects-grid {
+.portfolio-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.portfolio-tab {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.portfolio-tab:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.portfolio-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg-primary);
+  font-weight: 600;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.tab-content.active {
   display: grid;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.projects-grid {
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }

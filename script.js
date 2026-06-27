@@ -280,6 +280,7 @@ function initInquiryForm() {
 
   const errorEl = document.getElementById('form-error');
   const nameInput = document.getElementById('inquiry-name');
+  const contactInput = document.getElementById('inquiry-contact');
   const businessInput = document.getElementById('inquiry-business');
   const serviceSelect = document.getElementById('inquiry-service');
   const budgetSelect = document.getElementById('inquiry-budget');
@@ -287,7 +288,7 @@ function initInquiryForm() {
   const messageInput = document.getElementById('inquiry-message');
 
   // Clear error styling on input
-  [nameInput, serviceSelect, messageInput].forEach(el => {
+  [nameInput, contactInput, serviceSelect, messageInput].forEach(el => {
     if (el) {
       el.addEventListener('input', () => {
         el.classList.remove('form-input--error');
@@ -304,7 +305,7 @@ function initInquiryForm() {
     e.preventDefault();
 
     // Clear previous errors
-    [nameInput, serviceSelect, messageInput].forEach(el => {
+    [nameInput, contactInput, serviceSelect, messageInput].forEach(el => {
       if (el) el.classList.remove('form-input--error');
     });
     if (errorEl) errorEl.textContent = '';
@@ -314,6 +315,10 @@ function initInquiryForm() {
     if (!nameInput.value.trim()) {
       nameInput.classList.add('form-input--error');
       errors.push('Name');
+    }
+    if (!contactInput.value.trim()) {
+      contactInput.classList.add('form-input--error');
+      errors.push('Contact info');
     }
     if (!serviceSelect.value) {
       serviceSelect.classList.add('form-input--error');
@@ -337,6 +342,7 @@ function initInquiryForm() {
       color: 0x818cf8, // matching your accent color
       fields: [
         { name: "Name", value: nameInput.value.trim(), inline: true },
+        { name: "Contact", value: contactInput.value.trim(), inline: true },
         { name: "Service", value: serviceSelect.value, inline: true },
       ],
       timestamp: new Date().toISOString()

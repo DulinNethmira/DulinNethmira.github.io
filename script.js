@@ -329,43 +329,72 @@ function initInquiryForm() {
       return;
     }
 
-    // Build the WhatsApp message
-    let msg = `Hi Dulin! I'd like to inquire about a project.\n\n`;
-    msg += `*Name:* ${nameInput.value.trim()}\n`;
+    // Build the Discord webhook payload
+    const webhookUrl = 'https://discord.com/api/webhooks/1520320753122152500/7ogNoQwyvP8rcMjMCqxIuKPjqx2aOEyDjAIke3BqyKaLKBM3HFpsOWzeWXvCZ5rxMV6f';
+
+    const embed = {
+      title: "New Project Inquiry",
+      color: 0x818cf8, // matching your accent color
+      fields: [
+        { name: "Name", value: nameInput.value.trim(), inline: true },
+        { name: "Service", value: serviceSelect.value, inline: true },
+      ],
+      timestamp: new Date().toISOString()
+    };
+
     if (businessInput.value.trim()) {
-      msg += `*Business/Channel:* ${businessInput.value.trim()}\n`;
+      embed.fields.push({ name: "Business/Channel", value: businessInput.value.trim(), inline: false });
     }
-    msg += `*Service:* ${serviceSelect.value}\n`;
     if (budgetSelect.value) {
-      msg += `*Budget:* ${budgetSelect.value}\n`;
+      embed.fields.push({ name: "Budget", value: budgetSelect.value, inline: true });
     }
     if (deadlineInput.value.trim()) {
-      msg += `*Deadline:* ${deadlineInput.value.trim()}\n`;
+      embed.fields.push({ name: "Deadline", value: deadlineInput.value.trim(), inline: true });
     }
-    msg += `\n*Message:*\n${messageInput.value.trim()}`;
+    embed.fields.push({ name: "Message", value: messageInput.value.trim(), inline: false });
 
-    const waUrl = `https://wa.link/q3u4v3`;
-    // Build a fallback wa.me URL with the message
-    // Open the short link but append the pre-filled text via clipboard approach
-    // For maximum compatibility, we'll copy message to clipboard and open WhatsApp
-    const textArea = document.createElement('textarea');
-    textArea.value = msg;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try { document.execCommand('copy'); } catch(e) {}
-    document.body.removeChild(textArea);
-    
-    window.open(waUrl, '_blank');
-    
-    // Show success feedback
+    const payload = {
+      content: "<@963617561226924133> You have a new inquiry from your website!", // Pings your Discord ID
+      embeds: [embed]
+    };
+
+    // Change button state
     const submitBtn = document.getElementById('form-submit-btn');
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Message copied! Paste in WhatsApp`;
-    submitBtn.style.background = 'var(--whatsapp)';
-    setTimeout(() => {
+    submitBtn.innerHTML = 'Sending...';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if (response.ok) {
+        // Show success feedback
+        submitBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Inquiry Sent!`;
+        submitBtn.style.background = '#25d366'; // Green success color
+        form.reset(); // clear the form
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        }, 4000);
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    })
+    .catch(error => {
+      console.error('Error sending webhook:', error);
+      if (errorEl) errorEl.textContent = 'Failed to send inquiry. Please try contacting via WhatsApp or Email instead.';
       submitBtn.innerHTML = originalText;
-      submitBtn.style.background = '';
-    }, 4000);
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+    });
   });
 }
 

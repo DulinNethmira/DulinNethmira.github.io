@@ -34,6 +34,7 @@ function typeEffect() {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(typeEffect, 600);
   initPortfolioTabs();
+  initInquiryForm();
 });
 
 
@@ -269,6 +270,102 @@ function initPortfolioTabs() {
         targetContent.classList.add('active');
       }
     });
+  });
+}
+
+// ===== INQUIRY FORM =====
+function initInquiryForm() {
+  const form = document.getElementById('inquiry-form');
+  if (!form) return;
+
+  const errorEl = document.getElementById('form-error');
+  const nameInput = document.getElementById('inquiry-name');
+  const businessInput = document.getElementById('inquiry-business');
+  const serviceSelect = document.getElementById('inquiry-service');
+  const budgetSelect = document.getElementById('inquiry-budget');
+  const deadlineInput = document.getElementById('inquiry-deadline');
+  const messageInput = document.getElementById('inquiry-message');
+
+  // Clear error styling on input
+  [nameInput, serviceSelect, messageInput].forEach(el => {
+    if (el) {
+      el.addEventListener('input', () => {
+        el.classList.remove('form-input--error');
+        if (errorEl) errorEl.textContent = '';
+      });
+      el.addEventListener('change', () => {
+        el.classList.remove('form-input--error');
+        if (errorEl) errorEl.textContent = '';
+      });
+    }
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Clear previous errors
+    [nameInput, serviceSelect, messageInput].forEach(el => {
+      if (el) el.classList.remove('form-input--error');
+    });
+    if (errorEl) errorEl.textContent = '';
+
+    // Validate required fields
+    const errors = [];
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add('form-input--error');
+      errors.push('Name');
+    }
+    if (!serviceSelect.value) {
+      serviceSelect.classList.add('form-input--error');
+      errors.push('Service needed');
+    }
+    if (!messageInput.value.trim()) {
+      messageInput.classList.add('form-input--error');
+      errors.push('Message');
+    }
+
+    if (errors.length > 0) {
+      if (errorEl) errorEl.textContent = `Please fill in: ${errors.join(', ')}`;
+      return;
+    }
+
+    // Build the WhatsApp message
+    let msg = `Hi Dulin! I'd like to inquire about a project.\n\n`;
+    msg += `*Name:* ${nameInput.value.trim()}\n`;
+    if (businessInput.value.trim()) {
+      msg += `*Business/Channel:* ${businessInput.value.trim()}\n`;
+    }
+    msg += `*Service:* ${serviceSelect.value}\n`;
+    if (budgetSelect.value) {
+      msg += `*Budget:* ${budgetSelect.value}\n`;
+    }
+    if (deadlineInput.value.trim()) {
+      msg += `*Deadline:* ${deadlineInput.value.trim()}\n`;
+    }
+    msg += `\n*Message:*\n${messageInput.value.trim()}`;
+
+    const waUrl = `https://wa.link/q3u4v3`;
+    // Build a fallback wa.me URL with the message
+    // Open the short link but append the pre-filled text via clipboard approach
+    // For maximum compatibility, we'll copy message to clipboard and open WhatsApp
+    const textArea = document.createElement('textarea');
+    textArea.value = msg;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(textArea);
+    
+    window.open(waUrl, '_blank');
+    
+    // Show success feedback
+    const submitBtn = document.getElementById('form-submit-btn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Message copied! Paste in WhatsApp`;
+    submitBtn.style.background = 'var(--whatsapp)';
+    setTimeout(() => {
+      submitBtn.innerHTML = originalText;
+      submitBtn.style.background = '';
+    }, 4000);
   });
 }
 

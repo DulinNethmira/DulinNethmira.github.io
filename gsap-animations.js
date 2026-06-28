@@ -23,9 +23,10 @@
   // ===== DISABLE OLD IntersectionObserver ANIMATIONS =====
   // Remove the CSS-driven .animate-on-scroll initial state so GSAP takes control
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    el.classList.add('visible'); // Make them visible immediately (GSAP will handle the animation)
-    el.style.opacity = '';
-    el.style.transform = '';
+    el.classList.remove('animate-on-scroll');
+    el.classList.add('visible'); 
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
     el.style.transition = 'none'; // Kill CSS transitions so GSAP has full control
   });
 

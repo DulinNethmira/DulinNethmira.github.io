@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Zone Mobile | Premium Phone Arcade (Concept)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #ffcc00; /* K-Zone Gold/Yellow */
+            --accent-hover: #ffe066;
+            --accent-glow: rgba(255, 204, 0, 0.2);
+        }
+        .hero-title { letter-spacing: -3px; }
+        .hero-badge { color: var(--accent); border-color: rgba(255, 204, 0, 0.3); background: rgba(255, 204, 0, 0.1); }
+        .badge-dot { background: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">K-ZONE<span class="accent-dot">.</span></a>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link">Smartphones</a></li>
+                <li><a href="#" class="nav-link">Accessories</a></li>
+                <li><a href="#" class="nav-link">Repair Service</a></li>
+                <li><a href="#" class="nav-link nav-cta">Buy Now</a></li>
+                <div class="nav-indicator"></div>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="container hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Official Retailer in Homagama
+            </div>
+            <h1 class="hero-title">Experience the <br><span class="gradient-text">Future of Mobile</span></h1>
+            <p class="hero-subtitle">The most advanced smartphone arcade in Homagama. Luxury tech, global brands, and expert service in one place.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary">View Collection</a>
+                <a href="#" class="btn btn-ghost">Repair Service</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Genuine</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">97+</span>
+                    <span class="stat-label">Reviews</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">Fast</span>
+                    <span class="stat-label">Repairs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED BRANDS (3D ORBIT) ===== -->
+    <section class="section about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image-card">
+                        <div id="skills-orbit" class="skills-orbit">
+                            <!-- JS will inject: Apple, Samsung, Xiaomi, Vivo, Oppo, Huawei, Nokia, etc. -->
+                        </div>
+                        <div class="about-image-decoration"></div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Premium Brands</span>
+                    <h2 class="section-title">All your favorite <span class="gradient-text">brands in one place</span></h2>
+                    <p class="about-text">From the latest iPhone releases to high-performance gaming phones, K-Zone brings the world's best technology to the heart of Homagama.</p>
+                    <div class="hero-actions" style="justify-content: flex-start; margin-top: 32px;">
+                        <a href="#" class="btn btn-primary">Visit Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <script>
+        // Custom brands for the orbit
+        window.customOrbitSkills = ['Apple', 'Samsung', 'Xiaomi', 'Vivo', 'Oppo', 'Huawei', 'Google', 'OnePlus', 'Asus', 'Nokia'];
+    </script>
+</body>
+</html>

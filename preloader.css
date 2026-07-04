@@ -1,0 +1,215 @@
+/* ===== PREMIUM PRELOADER V2 ===== */
+/* Replaces the basic logo+progress-bar preloader */
+
+.preloader-v2 {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  clip-path: circle(150% at 50% 50%);
+}
+
+.preloader-v2.is-done {
+  pointer-events: none;
+}
+
+/* Hide body overflow while preloader is active */
+body:not(.preloader-done) {
+  overflow: hidden !important;
+}
+
+/* ---- Floating Accent Shapes ---- */
+.preloader-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.preloader-shape {
+  position: absolute;
+  opacity: 0;
+}
+
+.preloader-shape.shape-1 {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.18), transparent 70%);
+  top: 15%;
+  left: 8%;
+  filter: blur(40px);
+}
+
+.preloader-shape.shape-2 {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.15), transparent 70%);
+  bottom: 20%;
+  right: 12%;
+  filter: blur(35px);
+}
+
+.preloader-shape.shape-3 {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.12), transparent 70%);
+  top: 55%;
+  right: 28%;
+  filter: blur(30px);
+}
+
+.preloader-shape.shape-4 {
+  width: 60px;
+  height: 60px;
+  border: 1.5px solid rgba(129, 140, 248, 0.25);
+  border-radius: 12px;
+  top: 25%;
+  right: 18%;
+}
+
+.preloader-shape.shape-5 {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(192, 132, 252, 0.2);
+  border-radius: 50%;
+  bottom: 30%;
+  left: 18%;
+}
+
+.preloader-shape.shape-6 {
+  width: 100px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.3), transparent);
+  top: 40%;
+  left: 5%;
+}
+
+/* ---- Kinetic Digit-Flip Counter ---- */
+.preloader-counter {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 14vw, 11rem);
+  font-weight: 900;
+  letter-spacing: -6px;
+  line-height: 1;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+  user-select: none;
+}
+
+.counter-digit-wrapper {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  position: relative;
+}
+
+.counter-digit-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.counter-digit-inner span {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  text-align: center;
+  min-width: 0.6em;
+}
+
+.counter-percent {
+  font-size: 0.22em;
+  color: var(--accent);
+  font-weight: 700;
+  align-self: flex-start;
+  margin-top: 0.35em;
+  margin-left: 6px;
+  letter-spacing: 0;
+}
+
+/* ---- Animated Wave Line ---- */
+.preloader-wave {
+  position: absolute;
+  bottom: 28%;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.preloader-wave svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Brand Text ---- */
+.preloader-brand {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-top: 28px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+}
+
+/* ---- Bottom Progress Line ---- */
+.preloader-progress-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  z-index: 2;
+  box-shadow: 0 0 15px rgba(129, 140, 248, 0.4);
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .preloader-v2 {
+    clip-path: none !important;
+  }
+  .preloader-v2.is-done {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .preloader-shape {
+    display: none !important;
+  }
+  .preloader-wave {
+    display: none !important;
+  }
+  .counter-digit-inner {
+    transition: none !important;
+  }
+}
+
+/* ---- Mobile Adjustments ---- */
+@media (max-width: 768px) {
+  .preloader-counter {
+    letter-spacing: -3px;
+  }
+  .preloader-shape.shape-4,
+  .preloader-shape.shape-5,
+  .preloader-shape.shape-6 {
+    display: none;
+  }
+}

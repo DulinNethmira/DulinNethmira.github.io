@@ -9,17 +9,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="preloader.css" />
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
 </head>
 <body>
-  <!-- ===== PRELOADER ===== -->
-  <div id="preloader" class="preloader">
-    <div class="preloader-content">
-      <div class="preloader-logo">dulin<span class="accent-dot">.</span></div>
-      <div class="preloader-bar">
-        <div class="preloader-progress"></div>
-      </div>
+  <!-- ===== PREMIUM PRELOADER V2 ===== -->
+  <div id="preloader" class="preloader-v2">
+    <div class="preloader-shapes">
+      <div class="preloader-shape shape-1"></div>
+      <div class="preloader-shape shape-2"></div>
+      <div class="preloader-shape shape-3"></div>
+      <div class="preloader-shape shape-4"></div>
+      <div class="preloader-shape shape-5"></div>
+      <div class="preloader-shape shape-6"></div>
     </div>
+    <div class="preloader-counter"></div>
+    <div class="preloader-brand">dulin<span class="accent-dot">.</span></div>
+    <div class="preloader-wave">
+      <svg viewBox="0 0 1200 40" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#818cf8" stop-opacity="0" />
+            <stop offset="30%" stop-color="#818cf8" stop-opacity="0.6" />
+            <stop offset="70%" stop-color="#c084fc" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path d="M0,20 Q150,5 300,20 T600,20 T900,20 T1200,20" stroke="url(#wave-gradient)" stroke-width="1.5" fill="none" />
+      </svg>
+    </div>
+    <div class="preloader-progress-line"></div>
   </div>
 
   <!-- ===== SCROLL PROGRESS BAR ===== -->
@@ -977,11 +996,24 @@
     </div>
   </footer>
 
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
   <!-- GSAP Core + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+  <!-- Preloader (must load before other scripts to catch load events) -->
+  <script src="preloader.js"></script>
+
+  <!-- Smooth Scroll (Lenis + GSAP sync) -->
+  <script src="smooth-scroll.js"></script>
+
   <script src="script.js"></script>
   <script src="gsap-animations.js"></script>
+
+  <!-- Three.js 3D Layer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="three-scene.js"></script>
 </body>
 </html>

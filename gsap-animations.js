@@ -478,7 +478,7 @@
   function initCardTilt() {
     if (REDUCED || IS_TOUCH) return;
 
-    var cards = document.querySelectorAll('.service-card, .pricing-card, .testimonial-card, .trust-card');
+    var cards = document.querySelectorAll('.service-card, .pricing-card, .testimonial-card, .trust-card, .project-card');
 
     cards.forEach(function (card) {
       card.addEventListener('mousemove', function (e) {

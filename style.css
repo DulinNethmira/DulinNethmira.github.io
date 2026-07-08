@@ -846,6 +846,12 @@ ul {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
 #tab-web .projects-grid {
   grid-template-columns: 1fr;
 }

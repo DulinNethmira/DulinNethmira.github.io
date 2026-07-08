@@ -15,8 +15,8 @@
     } catch (e) { return false; }
   }
 
-  if (!hasWebGL() || REDUCED) {
-    console.log('[three-scene] WebGL unavailable or reduced motion. Using fallback.');
+  if (!hasWebGL()) {
+    console.log('[three-scene] WebGL unavailable. Using fallback.');
     return;
   }
 

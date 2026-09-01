@@ -49,9 +49,9 @@ const Tools = () => {
                 <div className="tool-actions">
                   {tool.productUrl && (
                     <Magnetic>
-                      <Link to={tool.productUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary border-none">
+                      <a href={tool.productUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary border-none">
                         <AppWindow size={18} /> View Product
-                      </Link>
+                      </a>
                     </Magnetic>
                   )}
                   {tool.github && (

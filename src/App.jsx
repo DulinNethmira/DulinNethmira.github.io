@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -66,6 +66,7 @@ function App() {
           <Route path="/tools" element={<Tools />} />
           <Route path="/services" element={<Services onContactClick={() => setIsContactOpen(true)} />} />
           <Route path="/tools/vlc-rpc/*" element={<VlcRpcApp />} />
+          <Route path="/vlc-rpc/*" element={<Navigate to="/tools/vlc-rpc" replace />} />
         </Routes>
       </ErrorBoundary>
       {!isVlcRpcRoute && <Footer />}

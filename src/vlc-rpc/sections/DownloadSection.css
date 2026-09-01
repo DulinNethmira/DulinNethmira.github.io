@@ -1,0 +1,123 @@
+.vlc-download-section {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.vlc-download-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.vlc-download-subtitle {
+  margin-bottom: 3rem;
+}
+
+.vlc-download-card {
+  text-align: left;
+  overflow: hidden;
+}
+
+.vlc-download-card-content {
+  padding: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.vlc-download-info h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: white;
+}
+
+.vlc-release-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.vlc-badge {
+  background: rgba(255, 140, 0, 0.15);
+  color: #ff8c00;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.vlc-meta-text {
+  color: #a1a1aa;
+  font-size: 0.875rem;
+}
+
+.vlc-loading-pulse {
+  color: #71717a;
+  font-size: 0.875rem;
+  animation: vlc-pulse 2s infinite ease-in-out;
+}
+
+@keyframes vlc-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.vlc-download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.vlc-download-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.vlc-download-card-footer {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem 2.5rem;
+  border-top: 1px solid var(--vlc-border);
+  display: flex;
+  gap: 2rem;
+}
+
+.vlc-download-card-footer a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.vlc-download-card-footer a:hover {
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .vlc-download-card-content {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .vlc-release-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .vlc-download-actions {
+    display: flex;
+    justify-content: center;
+  }
+  .vlc-download-card-footer {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,44 @@
+.vlc-status-bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vlc-status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.vlc-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #52525b;
+}
+
+.vlc-status-item:nth-child(1) .vlc-status-dot { background: #3b82f6; }
+.vlc-status-item:nth-child(2) .vlc-status-dot { background: #0ea5e9; }
+.vlc-status-item:nth-child(3) .vlc-status-dot { background: #ff8c00; }
+.vlc-status-item:nth-child(4) .vlc-status-dot { background: #8b5cf6; }
+.vlc-status-item:nth-child(5) .vlc-status-dot { background: #10b981; }
+
+@media (max-width: 768px) {
+  .vlc-status-bar {
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 16px;
+  }
+}

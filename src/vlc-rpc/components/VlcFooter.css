@@ -1,0 +1,83 @@
+.vlc-footer {
+  background-color: #050506;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 4rem 0 0 0;
+  font-family: 'Inter', sans-serif;
+  color: #a1a1aa;
+}
+
+.vlc-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.vlc-footer-brand-col {
+  max-width: 300px;
+}
+
+.vlc-footer-desc {
+  margin-top: 1.5rem;
+  line-height: 1.6;
+  font-size: 0.875rem;
+}
+
+.vlc-footer-links-grid {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.vlc-footer-col h4 {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.vlc-footer-col a {
+  display: block;
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.vlc-footer-col a:hover {
+  color: white;
+}
+
+.vlc-footer-bottom {
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 2rem 0;
+}
+
+.vlc-footer-bottom-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.vlc-disclaimer {
+  color: #52525b;
+}
+
+@media (max-width: 768px) {
+  .vlc-footer-container {
+    flex-direction: column;
+  }
+  .vlc-footer-bottom-container {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

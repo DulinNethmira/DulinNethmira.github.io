@@ -1,0 +1,64 @@
+.vlc-audience-section {
+  padding: 6rem 0;
+}
+
+.vlc-audience-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.vlc-audience-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.vlc-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.vlc-audience-card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vlc-audience-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.vlc-audience-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 140, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.vlc-audience-icon {
+  color: #ff8c00;
+  width: 24px;
+  height: 24px;
+}
+
+.vlc-audience-card h3 {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+.vlc-audience-card p {
+  color: #a1a1aa;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+}

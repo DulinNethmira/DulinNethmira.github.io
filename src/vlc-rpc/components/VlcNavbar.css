@@ -1,0 +1,97 @@
+.vlc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(10, 10, 11, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Inter', sans-serif;
+}
+
+.vlc-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vlc-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.vlc-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.vlc-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: inline-block;
+}
+
+.vlc-nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.vlc-nav-links a {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.vlc-nav-links a:hover {
+  color: white;
+}
+
+.vlc-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.vlc-nav-right a {
+  color: #a1a1aa;
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.2s ease;
+}
+
+.vlc-nav-right a:hover {
+  color: white;
+}
+
+.vlc-primary-btn {
+  background: white;
+  color: black !important;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: opacity 0.2s ease, transform 0.1s ease !important;
+}
+
+.vlc-primary-btn:hover {
+  opacity: 0.9;
+}
+
+.vlc-primary-btn:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+  .vlc-nav-links, .vlc-nav-right .vlc-nav-link {
+    display: none;
+  }
+}

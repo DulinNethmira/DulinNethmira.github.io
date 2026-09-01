@@ -1,0 +1,40 @@
+.marquee-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 40px 0;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-glass);
+  border-bottom: 1px solid var(--border-glass);
+  margin-top: 80px;
+  margin-bottom: 80px;
+  transform: rotate(-2deg) scale(1.05); /* Slight slant for dynamic feel */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.marquee-inner {
+  display: flex;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.marquee-part {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--border-glass);
+  text-transform: uppercase;
+  padding: 0 40px;
+  letter-spacing: -0.02em;
+}
+
+.marquee-part span {
+  color: var(--text-primary);
+  -webkit-text-stroke: 0px;
+}

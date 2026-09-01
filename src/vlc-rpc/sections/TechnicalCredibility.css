@@ -1,0 +1,154 @@
+.vlc-technical-section {
+  padding: 6rem 0;
+}
+
+.vlc-technical-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.vlc-technical-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.vlc-architecture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.vlc-arch-card {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.vlc-arch-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.vlc-arch-icon {
+  color: #ff8c00;
+  width: 24px;
+  height: 24px;
+}
+
+.vlc-arch-card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.vlc-arch-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.vlc-arch-node {
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: #e4e4e7;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  max-width: 320px;
+  transition: border-color 0.3s ease;
+}
+
+.vlc-arch-node:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.highlight-node {
+  border-color: rgba(255, 140, 0, 0.4);
+  background: rgba(255, 140, 0, 0.05);
+  color: white;
+}
+
+.branch-node {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.vlc-arch-arrow {
+  color: #52525b;
+  margin: 0.5rem 0;
+  width: 20px;
+  height: 20px;
+}
+
+.vlc-arch-arrow-small {
+  color: #52525b;
+  margin: 0.25rem 0;
+  width: 16px;
+  height: 16px;
+}
+
+.vlc-arch-split {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+.vlc-arch-branch {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.vlc-arch-line-vertical {
+  width: 1px;
+  height: 16px;
+  background: #52525b;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+}
+
+.vlc-arch-line-horizontal {
+  height: 1px;
+  background: #52525b;
+  position: absolute;
+  top: -16px;
+  width: 50%;
+}
+
+.vlc-arch-line-horizontal.left {
+  right: 0;
+}
+
+.vlc-arch-line-horizontal.right {
+  left: 0;
+}
+
+.vlc-arch-footer-note {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.875rem;
+  color: #71717a;
+  text-align: center;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .vlc-architecture-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,62 @@
+body {
+  /* Hide default cursor on desktop */
+  cursor: none;
+}
+
+/* Ensure default cursor shows on links if fallback needed, 
+   but we want to hide it completely if custom cursor works */
+a, button, input, textarea {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-primary);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-cursor-follower {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.custom-cursor.hover {
+  width: 0;
+  height: 0;
+}
+
+.custom-cursor-follower.hover {
+  width: 60px;
+  height: 60px;
+  background-color: rgba(129, 140, 248, 0.1);
+  border-color: rgba(129, 140, 248, 0.8);
+  mix-blend-mode: difference;
+}
+
+/* Disable custom cursor on touch devices */
+@media (pointer: coarse) {
+  body, a, button, input, textarea {
+    cursor: auto;
+  }
+  .custom-cursor,
+  .custom-cursor-follower {
+    display: none;
+  }
+}

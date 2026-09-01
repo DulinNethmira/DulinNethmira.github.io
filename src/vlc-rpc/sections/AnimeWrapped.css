@@ -1,0 +1,125 @@
+.vlc-wrapped-section {
+  padding: 6rem 0;
+  background: radial-gradient(circle at center, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+}
+
+.vlc-wrapped-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.vlc-wrapped-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.vlc-wrapped-features {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0 0;
+}
+
+.vlc-wrapped-features li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  color: #e4e4e7;
+  font-weight: 500;
+}
+
+.vlc-accent-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8b5cf6;
+  box-shadow: 0 0 10px #8b5cf6;
+}
+
+.vlc-wrapped-visual {
+  flex: 1;
+  max-width: 500px;
+  padding: 2rem;
+  border-color: rgba(139, 92, 246, 0.2);
+  background: linear-gradient(180deg, rgba(18, 18, 20, 0.9) 0%, rgba(139, 92, 246, 0.05) 100%);
+}
+
+.vlc-wrapped-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: white;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vlc-wrapped-icon {
+  color: #8b5cf6;
+}
+
+.vlc-wrapped-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.vlc-stat-box {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vlc-stat-label {
+  color: #a1a1aa;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.vlc-stat-value {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.vlc-wrapped-footer {
+  display: flex;
+  gap: 1rem;
+}
+
+.vlc-wrapped-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.75rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.vlc-wrapped-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 900px) {
+  .vlc-wrapped-container {
+    flex-direction: column;
+  }
+}

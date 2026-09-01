@@ -1,0 +1,82 @@
+/* VLC RPC Dedicated Theme */
+:root {
+  --vlc-bg-main: #0a0a0b;
+  --vlc-bg-surface: #121214;
+  --vlc-bg-surface-hover: #1c1c1f;
+  --vlc-border: rgba(255, 255, 255, 0.08);
+  --vlc-border-strong: rgba(255, 255, 255, 0.15);
+  
+  --vlc-text-primary: #ffffff;
+  --vlc-text-secondary: #a1a1aa;
+  --vlc-text-tertiary: #71717a;
+  
+  --vlc-accent-primary: #ff8c00;
+  --vlc-accent-secondary: #ff5500;
+  --vlc-accent-blue: #3b82f6;
+  --vlc-accent-purple: #8b5cf6;
+  --vlc-accent-green: #22c55e;
+}
+
+/* Base resets specifically for VLC RPC */
+.vlc-rpc-layout {
+  background-color: var(--vlc-bg-main);
+  color: var(--vlc-text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Restore normal cursor when inside VLC RPC */
+body.vlc-rpc-active,
+body.vlc-rpc-active input,
+body.vlc-rpc-active textarea {
+  cursor: auto !important;
+}
+
+body.vlc-rpc-active a,
+body.vlc-rpc-active button,
+body.vlc-rpc-active .clickable {
+  cursor: pointer !important;
+}
+
+.vlc-rpc-main {
+  flex: 1;
+}
+
+/* Typography components */
+.vlc-heading-display {
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
+}
+
+.vlc-heading-section {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.vlc-body-large {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--vlc-text-secondary);
+}
+
+.vlc-mono {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+}
+
+/* Interactive elements */
+.vlc-glass-panel {
+  background: rgba(18, 18, 20, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--vlc-border);
+  border-radius: 12px;
+}

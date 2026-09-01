@@ -1,0 +1,97 @@
+.vlc-rewatch-section {
+  padding: 6rem 0;
+}
+
+.vlc-rewatch-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.vlc-rewatch-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.vlc-rewatch-visual {
+  flex: 1.2;
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.vlc-rewatch-machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.vlc-rewatch-state {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #18181b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: white;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vlc-rewatch-state:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.vlc-state-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.vlc-rewatch-state.completed .vlc-state-icon { color: #a1a1aa; }
+.vlc-rewatch-state.detected .vlc-state-icon { color: #3b82f6; }
+.vlc-rewatch-state.confirmed .vlc-state-icon { color: #ff8c00; }
+.vlc-rewatch-state.sync .vlc-state-icon { color: #22c55e; }
+
+.vlc-rewatch-line {
+  height: 40px;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+  position: relative;
+}
+
+.vlc-rewatch-line.threshold {
+  height: 60px;
+  background: repeating-linear-gradient(180deg, rgba(255,140,0,0.5) 0, rgba(255,140,0,0.5) 4px, transparent 4px, transparent 8px);
+}
+
+.vlc-threshold-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0a0a0b;
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  color: #ff8c00;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .vlc-rewatch-container {
+    flex-direction: column;
+  }
+}
